@@ -318,6 +318,22 @@ tkei_distribution = (
 tkei_distribution["percent"] = tkei_distribution["count"] / len(metrics_df) * 100
 tkei_distribution["metric"] = "TKEI"
 
+tkei_group_order = [
+    "low expansion",
+    "moderate-low expansion",
+    "moderate-high expansion",
+    "high expansion",
+    "complete title replication"
+]
+
+tkei_distribution["group"] = pd.Categorical(
+    tkei_distribution["group"],
+    categories=tkei_group_order,
+    ordered=True
+)
+tkei_distribution = tkei_distribution.sort_values("group").reset_index(drop=True)
+tkei_distribution["group"] = tkei_distribution["group"].astype(str)
+
 tkoi_distribution = (
     metrics_df["TKOI_quartile_group"]
     .value_counts()
@@ -326,6 +342,22 @@ tkoi_distribution = (
 )
 tkoi_distribution["percent"] = tkoi_distribution["count"] / len(metrics_df) * 100
 tkoi_distribution["metric"] = "TKOI"
+
+tkoi_group_order = [
+    "low overlap",
+    "moderate-low overlap",
+    "moderate-high overlap",
+    "high overlap",
+    "complete title independence"
+]
+
+tkoi_distribution["group"] = pd.Categorical(
+    tkoi_distribution["group"],
+    categories=tkoi_group_order,
+    ordered=True
+)
+tkoi_distribution = tkoi_distribution.sort_values("group").reset_index(drop=True)
+tkoi_distribution["group"] = tkoi_distribution["group"].astype(str)
 
 strategy_distribution = pd.concat(
     [tkei_distribution, tkoi_distribution],
