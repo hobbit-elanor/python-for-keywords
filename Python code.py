@@ -6,8 +6,6 @@ from pathlib import Path
 # ============================================================
 # Supplementary reproducibility materials for the manuscript:
 #
-# Malyuga, E. N., & Grishechko, E. G. (2026). Lexical overlap between author keywords and titles as a measurable characteristic of scholarly metadata: a corpus-based analysis. Science Editor and Publisher.
-#
 # This script contains the computational procedure used for preprocessing metadata, tokenization, calculation of quantitative indicators, quartile classification, and generation of statistical tables.
 #
 # The original manuscript corpus is not distributed because it contains confidential editorial materials.
